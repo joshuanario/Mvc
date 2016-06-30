@@ -50,15 +50,18 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
                 {
                     {
                         model => model.Property3["key"],
-                        "<textarea id=\"HtmlEncode[[pre_Property3_key_]]\" name=\"HtmlEncode[[pre.Property3[key]]]\">\r\nHtmlEncode[[Prop3Val]]</textarea>"
+                        "<textarea id=\"HtmlEncode[[pre_Property3_key_]]\" name=\"HtmlEncode[[pre.Property3[key]]]\">" + Environment.NewLine +
+                        "HtmlEncode[[Prop3Val]]</textarea>"
                     },
                     {
                         model => model.Property4.Property5,
-                        "<textarea id=\"HtmlEncode[[pre_Property4_Property5]]\" name=\"HtmlEncode[[pre.Property4.Property5]]\">\r\nHtmlEncode[[Prop5Val]]</textarea>"
+                        "<textarea id=\"HtmlEncode[[pre_Property4_Property5]]\" name=\"HtmlEncode[[pre.Property4.Property5]]\">" + Environment.NewLine +
+                        "HtmlEncode[[Prop5Val]]</textarea>"
                     },
                     {
                         model => model.Property4.Property6[0],
-                        "<textarea id=\"HtmlEncode[[pre_Property4_Property6_0_]]\" name=\"HtmlEncode[[pre.Property4.Property6[0]]]\">\r\nHtmlEncode[[Prop6Val]]</textarea>"
+                        "<textarea id=\"HtmlEncode[[pre_Property4_Property6_0_]]\" name=\"HtmlEncode[[pre.Property4.Property6[0]]]\">" + Environment.NewLine +
+                        "HtmlEncode[[Prop6Val]]</textarea>"
                     }
                 };
             }

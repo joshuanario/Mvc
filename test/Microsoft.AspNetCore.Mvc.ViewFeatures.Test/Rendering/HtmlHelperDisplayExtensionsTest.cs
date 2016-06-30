@@ -1,6 +1,7 @@
 ﻿// Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.TestCommon;
@@ -16,7 +17,8 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
         public void DisplayHelpers_FindsModel_WhenViewDataIsNotSet()
         {
             // Arrange
-            var expected = "<div class=\"HtmlEncode[[display-label]]\">HtmlEncode[[SomeProperty]]</div>\r\n<div class=\"HtmlEncode[[display-field]]\"></div>\r\n";
+            var expected = $"<div class=\"HtmlEncode[[display-label]]\">HtmlEncode[[SomeProperty]]</div>{Environment.NewLine}" + 
+                $"<div class=\"HtmlEncode[[display-field]]\"></div>{Environment.NewLine}";
             var model = new SomeModel();
             var viewEngine = new Mock<ICompositeViewEngine>(MockBehavior.Strict);
             viewEngine
@@ -272,7 +274,8 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
         public void DisplayForModel_FindsModel()
         {
             // Arrange
-            var expected = "<div class=\"HtmlEncode[[display-label]]\">HtmlEncode[[SomeProperty]]</div>\r\n<div class=\"HtmlEncode[[display-field]]\">HtmlEncode[[SomeValue]]</div>\r\n";
+            var expected = $"<div class=\"HtmlEncode[[display-label]]\">HtmlEncode[[SomeProperty]]</div>{Environment.NewLine}" +
+                $"<div class=\"HtmlEncode[[display-field]]\">HtmlEncode[[SomeValue]]</div>{Environment.NewLine}";
             var model = new SomeModel { SomeProperty = "SomeValue" };
             var viewEngine = new Mock<ICompositeViewEngine>(MockBehavior.Strict);
             viewEngine
