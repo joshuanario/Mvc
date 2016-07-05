@@ -49,10 +49,7 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
             var model = new SomeModel { SomeProperty = "ModelValue" };
             var view = new Mock<IView>();
             view.Setup(v => v.RenderAsync(It.IsAny<ViewContext>()))
-                .Callback(async (ViewContext v) =>
-                {
-                    await v.Writer.WriteAsync(v.ViewData["SomeProperty"].ToString());
-                })
+                .Callback((ViewContext v) => v.Writer.WriteAsync(v.ViewData["SomeProperty"].ToString()))
                 .Returns(Task.FromResult(0));
             var viewEngine = new Mock<ICompositeViewEngine>(MockBehavior.Strict);
             viewEngine
@@ -99,10 +96,7 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
             var model = new SomeModel { SomeProperty = "ModelValue" };
             var view = new Mock<IView>();
             view.Setup(v => v.RenderAsync(It.IsAny<ViewContext>()))
-                .Callback(async (ViewContext v) =>
-                {
-                    await v.Writer.WriteAsync(v.ViewData["SomeProperty"].ToString());
-                })
+                .Callback((ViewContext v) => v.Writer.WriteAsync(v.ViewData["SomeProperty"].ToString()))
                 .Returns(Task.FromResult(0));
             var viewEngine = new Mock<ICompositeViewEngine>(MockBehavior.Strict);
             viewEngine
@@ -130,10 +124,7 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
             var model = new SomeModel { SomeProperty = "ModelValue" };
             var view = new Mock<IView>();
             view.Setup(v => v.RenderAsync(It.IsAny<ViewContext>()))
-                .Callback(async (ViewContext v) =>
-                {
-                    await v.Writer.WriteAsync(v.ViewData.TemplateInfo.HtmlFieldPrefix);
-                })
+                .Callback((ViewContext v) => v.Writer.WriteAsync(v.ViewData.TemplateInfo.HtmlFieldPrefix))
                 .Returns(Task.FromResult(0));
             var viewEngine = new Mock<ICompositeViewEngine>(MockBehavior.Strict);
             viewEngine
@@ -141,8 +132,7 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
                 .Returns(ViewEngineResult.NotFound(string.Empty, Enumerable.Empty<string>()));
             viewEngine
                 .Setup(v => v.FindView(It.IsAny<ActionContext>(), "DisplayTemplates/SomeTemplate", /*isMainPage*/ false))
-                .Returns(ViewEngineResult.Found("SomeView", view.Object))
-                .Verifiable();
+                .Returns(ViewEngineResult.Found("SomeView", view.Object));
             var helper = DefaultTemplatesUtilities.GetHtmlHelper(model, viewEngine.Object);
 
             // Act
@@ -152,7 +142,6 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
                 htmlFieldName: "SomeField");
 
             // Assert
-            viewEngine.Verify();
             Assert.Equal("SomeField", HtmlContentUtilities.HtmlContentToString(displayResult));
         }
 
@@ -163,10 +152,7 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
             var model = new SomeModel { SomeProperty = "ModelValue" };
             var view = new Mock<IView>();
             view.Setup(v => v.RenderAsync(It.IsAny<ViewContext>()))
-                .Callback(async (ViewContext v) =>
-                {
-                    await v.Writer.WriteAsync(v.ViewData["SomeProperty"].ToString());
-                })
+                .Callback((ViewContext v) => v.Writer.WriteAsync(v.ViewData["SomeProperty"].ToString()))
                 .Returns(Task.FromResult(0));
             var viewEngine = new Mock<ICompositeViewEngine>(MockBehavior.Strict);
             viewEngine
@@ -213,10 +199,7 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
             var model = new SomeModel { SomeProperty = "ModelValue" };
             var view = new Mock<IView>();
             view.Setup(v => v.RenderAsync(It.IsAny<ViewContext>()))
-                .Callback(async (ViewContext v) =>
-                {
-                    await v.Writer.WriteAsync(v.ViewData["SomeProperty"].ToString());
-                })
+                .Callback((ViewContext v) => v.Writer.WriteAsync(v.ViewData["SomeProperty"].ToString()))
                 .Returns(Task.FromResult(0));
             var viewEngine = new Mock<ICompositeViewEngine>(MockBehavior.Strict);
             viewEngine
@@ -244,10 +227,7 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
             var model = new SomeModel { SomeProperty = "ModelValue" };
             var view = new Mock<IView>();
             view.Setup(v => v.RenderAsync(It.IsAny<ViewContext>()))
-                .Callback(async (ViewContext v) =>
-                {
-                    await v.Writer.WriteAsync(v.ViewData.TemplateInfo.HtmlFieldPrefix);
-                })
+                .Callback((ViewContext v) => v.Writer.WriteAsync(v.ViewData.TemplateInfo.HtmlFieldPrefix))
                 .Returns(Task.FromResult(0));
             var viewEngine = new Mock<ICompositeViewEngine>(MockBehavior.Strict);
             viewEngine
@@ -255,8 +235,7 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
                 .Returns(ViewEngineResult.NotFound(string.Empty, Enumerable.Empty<string>()));
             viewEngine
                 .Setup(v => v.FindView(It.IsAny<ActionContext>(), "DisplayTemplates/SomeTemplate", /*isMainPage*/ false))
-                .Returns(ViewEngineResult.Found("SomeView", view.Object))
-                .Verifiable();
+                .Returns(ViewEngineResult.Found("SomeView", view.Object));
             var helper = DefaultTemplatesUtilities.GetHtmlHelper(model, viewEngine.Object);
 
             // Act
@@ -266,7 +245,6 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
                 htmlFieldName: "SomeField");
 
             // Assert
-            viewEngine.Verify();
             Assert.Equal("SomeField", HtmlContentUtilities.HtmlContentToString(displayResult));
         }
 
@@ -300,10 +278,7 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
             var model = new SomeModel { SomeProperty = "ModelValue" };
             var view = new Mock<IView>();
             view.Setup(v => v.RenderAsync(It.IsAny<ViewContext>()))
-                .Callback(async (ViewContext v) =>
-                {
-                    await v.Writer.WriteAsync(v.ViewData["SomeProperty"].ToString());
-                })
+                .Callback((ViewContext v) => v.Writer.WriteAsync(v.ViewData["SomeProperty"].ToString()))
                 .Returns(Task.FromResult(0));
             var viewEngine = new Mock<ICompositeViewEngine>(MockBehavior.Strict);
             viewEngine
@@ -350,10 +325,7 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
             var model = new SomeModel { SomeProperty = "ModelValue" };
             var view = new Mock<IView>();
             view.Setup(v => v.RenderAsync(It.IsAny<ViewContext>()))
-                .Callback(async (ViewContext v) =>
-                {
-                    await v.Writer.WriteAsync(v.ViewData["SomeProperty"].ToString());
-                })
+                .Callback((ViewContext v) => v.Writer.WriteAsync(v.ViewData["SomeProperty"].ToString()))
                 .Returns(Task.FromResult(0));
             var viewEngine = new Mock<ICompositeViewEngine>(MockBehavior.Strict);
             viewEngine
@@ -380,10 +352,7 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
             var model = new SomeModel { SomeProperty = "ModelValue" };
             var view = new Mock<IView>();
             view.Setup(v => v.RenderAsync(It.IsAny<ViewContext>()))
-                .Callback(async (ViewContext v) =>
-                {
-                    await v.Writer.WriteAsync(v.ViewData.TemplateInfo.HtmlFieldPrefix);
-                })
+                .Callback((ViewContext v) => v.Writer.WriteAsync(v.ViewData.TemplateInfo.HtmlFieldPrefix))
                 .Returns(Task.FromResult(0));
             var viewEngine = new Mock<ICompositeViewEngine>(MockBehavior.Strict);
             viewEngine
@@ -391,8 +360,7 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
                 .Returns(ViewEngineResult.NotFound(string.Empty, Enumerable.Empty<string>()));
             viewEngine
                 .Setup(v => v.FindView(It.IsAny<ActionContext>(), "DisplayTemplates/SomeTemplate", /*isMainPage*/ false))
-                .Returns(ViewEngineResult.Found("SomeView", view.Object))
-                .Verifiable();
+                .Returns(ViewEngineResult.Found("SomeView", view.Object));
             var helper = DefaultTemplatesUtilities.GetHtmlHelper(model, viewEngine.Object);
 
             // Act
@@ -401,7 +369,6 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
                 htmlFieldName: "SomeField");
 
             // Assert
-            viewEngine.Verify();
             Assert.Equal("SomeField", HtmlContentUtilities.HtmlContentToString(displayResult));
         }
 

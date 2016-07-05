@@ -485,7 +485,6 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
             Assert.Equal(expected, HtmlContentUtilities.HtmlContentToString(result));
         }
 
-
         public class PasswordModel
         {
             public string Property1 { get; set; }
